@@ -26,6 +26,16 @@ module ActiveRecord # :nodoc: all
   end
 end
 
+module ActiveResource
+  class Base
+    class << self
+      def condition?(method)
+        false
+      end
+    end
+  end
+end
+
 ActiveRecord::Base.extend(Searchlogic::ActiveRecord::NamedScopeTools)
 ActiveRecord::Base.extend(Searchlogic::NamedScopes::Conditions)
 ActiveRecord::Base.extend(Searchlogic::NamedScopes::AssociationConditions)
